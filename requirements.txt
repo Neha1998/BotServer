@@ -1,0 +1,4 @@
+beautifulsoup4
+google
+psycopg2
+discord.py
