@@ -1,1 +1,1 @@
-$ web: gunicorn my_bot:app
+worker: python mybot.py
