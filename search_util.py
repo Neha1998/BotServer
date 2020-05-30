@@ -15,4 +15,4 @@ def g_search(self, query):
 
     except Exception as err:
         print("Error occured in searching {}".format(err))
-        return "Something failed"
+        return "Error in searching"

@@ -1,25 +1,36 @@
 import psycopg2
 
-# connecting with postgres
-try:
-    connection = psycopg2.connect(user="sheet_user",
-                                  password="12345",
-                                  host="127.0.0.1",
-                                  port="5432",
-                                  database="bot_server")
-
-    cursor = connection.cursor()
-
-except (Exception, psycopg2.Error) as error:
-    print("Error while fetching data from PostgreSQL", error)
-
-
 def in_db(q):
+    # connecting with postgres
+    try:
+        connection = psycopg2.connect(user="uziblvfmjfwkkm",
+                                      password="b576fbc515854d9120f740607161075dd6ca450cd9359e207940614107ad2dd4",
+                                      host="ec2-184-72-236-57.compute-1.amazonaws.com",
+                                      port="5432",
+                                      database="d4ajbjn3rbssfq")
+
+        cursor = connection.cursor()
+
+    except (Exception, psycopg2.Error) as error:
+        print("Error while fetching data from PostgreSQL", error)
     cursor.execute(q)
     connection.commit()
 
 
 def cache_search(q):
+    # connecting with postgres
+    try:
+        connection = psycopg2.connect(user="uziblvfmjfwkkm",
+                                      password="b576fbc515854d9120f740607161075dd6ca450cd9359e207940614107ad2dd4",
+                                      host="ec2-184-72-236-57.compute-1.amazonaws.com",
+                                      port="5432",
+                                      database="d4ajbjn3rbssfq")
+
+        cursor = connection.cursor()
+
+    except (Exception, psycopg2.Error) as error:
+        print("Error while fetching data from PostgreSQL", error)
+
     try:
         cursor.execute(q)
         # Selecting rows from recents table using cursor.fetchall
@@ -27,10 +38,11 @@ def cache_search(q):
 
         # get each row and it's columns values
         response = "Related recent searches are --->"
+        res = ""
         for row in mobile_records:
-            response += row[0] + "  "
-        if response:
-            return response
+            res += row[0] + "  "
+        if res:
+            return response + res
         else:
             return "No recent found"
     except Exception as err:
