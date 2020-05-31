@@ -27,7 +27,7 @@ class MyClient(discord.Client):
             query = message.content
             query = query.replace('!recent', '')
             # query to get pattern matching string from table "recents" of the particular user
-            exc = "select distinct searched from recents where user_id='{0}' and searched ~ '.*{1}.*'".format(self.user.id, query)
+            exc = "select distinct searched from recents where searched ~ '.*{}.*'".format(query)
             await message.channel.send(cache_search(exc))
 
 

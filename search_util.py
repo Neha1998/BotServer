@@ -5,7 +5,7 @@ from DB import in_db
 def g_search(self, query):
     try:
         # to maintain history of the searched words mapped with each user.
-        exc = "insert into recents (user_id, searched) values( {} , '{}')".format(self.user.id, query)
+        exc = "insert into recents (searched) values('{}')".format(query)
         in_db(exc)
 
         response = "Top 5 links related to {} are ----".format(query)
